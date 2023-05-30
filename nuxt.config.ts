@@ -10,8 +10,8 @@ export default defineNuxtConfig({
     modules: [
         '@nuxt/content',
         '@nuxt/image-edge',
-        '@inkline/plugin/nuxt',
         '@nuxtjs/i18n',
+        '@inkline/plugin/nuxt',
         'nuxt-icon',
         'nuxt-simple-sitemap'
     ],
@@ -113,7 +113,12 @@ export default defineNuxtConfig({
      */
     runtimeConfig: {
         public: {
-            siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://inkline.io'
+            siteUrl: '',
+            auth0: {
+                domain: '',
+                clientId: '',
+                callbackUrl: ''
+            }
         }
     }
 });
