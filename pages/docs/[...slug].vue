@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, onMounted } from 'vue';
-import { definePageMeta } from '#imports';
+import { definePageMeta, useContent, useContentHead } from '#imports';
 import { docsEventBus } from '~/utils';
 
 export default defineComponent({
@@ -20,6 +20,10 @@ export default defineComponent({
 
 <template>
     <article id="page">
-        <ContentDoc />
+        <ContentDoc>
+            <template #not-found>
+                <AppError />
+            </template>
+        </ContentDoc>
     </article>
 </template>

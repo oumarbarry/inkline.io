@@ -12,6 +12,8 @@ export default defineNuxtConfig({
         '@nuxt/image-edge',
         '@nuxtjs/i18n',
         '@inkline/plugin/nuxt',
+        '@vite-pwa/nuxt',
+        '@unocss/nuxt',
         'nuxt-icon',
         'nuxt-simple-sitemap'
     ],
@@ -23,7 +25,38 @@ export default defineNuxtConfig({
          * @docs https://nuxt.com/docs/api/configuration/nuxt-config#head
          */
         head: {
-            titleTemplate: '%s - Inkline'
+            title: 'Inkline',
+            link: [
+                { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' },
+                { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: 'black' }
+            ],
+            meta: [
+                {
+                    name: 'description',
+                    content:
+                        'Inkline is the intuitive UI Components library for building a high-quality, developer-friendly, configurable, and accessible Vue.js Design System.'
+                },
+                {
+                    property: 'og:type',
+                    content: 'website'
+                },
+                {
+                    property: 'og:image',
+                    content: 'https://www.inkline.io/assets/images/social/og-image.png'
+                },
+                {
+                    name: 'twitter:site',
+                    content: '@inkline'
+                },
+                {
+                    name: 'twitter:creator',
+                    content: '@alexgrozav'
+                },
+                {
+                    name: 'twitter:card',
+                    content: 'summary_large_image'
+                }
+            ]
         },
         /**
          * @docs https://nuxt.com/docs/getting-started/transitions
@@ -70,8 +103,9 @@ export default defineNuxtConfig({
      */
     i18n: {
         strategy: 'prefix_except_default',
+        baseUrl: 'https://www.inkline.io',
         defaultLocale: 'en',
-        locales: [{ code: 'en', iso: 'en', file: 'en.ts' }],
+        locales: [{ code: 'en', iso: 'en', file: 'en.ts', isCatchallLocale: true }],
         /**
          * @docs https://v8.i18n.nuxtjs.org/guide/lazy-load-translations
          */
@@ -84,6 +118,9 @@ export default defineNuxtConfig({
     inkline: {
         globals: {
             colorMode: 'light'
+        },
+        import: {
+            utilities: false
         }
     },
     /**
@@ -109,11 +146,40 @@ export default defineNuxtConfig({
         autoImport: false
     },
     /**
+     * @docs https://vite-pwa-org.netlify.app/
+     */
+    pwa: {
+        registerType: 'autoUpdate',
+        manifest: {
+            name: 'Inkline',
+            short_name: 'Inkline',
+            theme_color: '#ffffff',
+            icons: [
+                {
+                    src: 'pwa-192x192.png',
+                    sizes: '192x192',
+                    type: 'image/png'
+                },
+                {
+                    src: 'pwa-512x512.png',
+                    sizes: '512x512',
+                    type: 'image/png'
+                },
+                {
+                    src: 'pwa-512x512.png',
+                    sizes: '512x512',
+                    type: 'image/png',
+                    purpose: 'any maskable'
+                }
+            ]
+        }
+    },
+    /**
      * @docs https://nuxt.com/docs/guide/going-further/runtime-config
      */
     runtimeConfig: {
         public: {
-            siteUrl: '',
+            siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.inkline.io',
             auth0: {
                 domain: '',
                 clientId: '',

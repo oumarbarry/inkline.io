@@ -4,7 +4,8 @@ export function useSidebarNavigation(): NavigationPage[] {
     return [
         {
             title: 'Home',
-            url: '/docs'
+            url: '/docs',
+            index: true
         },
         {
             title: 'Getting started',
@@ -22,6 +23,7 @@ export function useSidebarNavigation(): NavigationPage[] {
                 {
                     title: 'Installation',
                     url: '/docs/installation',
+                    index: true,
                     children: [
                         {
                             title: 'Vite.js',
@@ -79,37 +81,37 @@ export function useSidebarNavigation(): NavigationPage[] {
                     }
                 },
                 {
+                    title: 'Plugin Options',
+                    url: '/docs/configuration/plugin'
+                },
+                {
                     title: 'Module Options',
                     children: [
                         {
                             title: 'Vite.js',
                             url: '/docs/configuration/vite',
                             navigation: {
-                                previous: '/docs/configuration/file',
-                                next: '/docs/configuration/plugin'
+                                previous: '/docs/configuration/plugin',
+                                next: '/docs/ui/design-tokens'
                             }
                         },
                         {
                             title: 'Nuxt',
                             url: '/docs/configuration/nuxt',
                             navigation: {
-                                previous: '/docs/configuration/file',
-                                next: '/docs/configuration/plugin'
+                                previous: '/docs/configuration/plugin',
+                                next: '/docs/ui/design-tokens'
                             }
                         },
                         {
                             title: 'Webpack.js',
                             url: '/docs/configuration/webpack',
                             navigation: {
-                                previous: '/docs/configuration/file',
-                                next: '/docs/configuration/plugin'
+                                previous: '/docs/configuration/plugin',
+                                next: '/docs/ui/design-tokens'
                             }
                         }
                     ]
-                },
-                {
-                    title: 'Plugin Options',
-                    url: '/docs/configuration/plugin'
                 }
             ]
         },
@@ -327,6 +329,7 @@ export function useSidebarNavigation(): NavigationPage[] {
                 {
                     title: 'Form Validation',
                     url: '/docs/forms/validation',
+                    index: true,
                     children: [
                         {
                             title: 'Schema',
@@ -348,27 +351,6 @@ export function useSidebarNavigation(): NavigationPage[] {
             title: 'Utilities',
             active: /\/docs\/utilities(\/.+)?/,
             children: [
-                // {
-                //     title: 'Overview',
-                //     url: '/docs/utilities'
-                // },
-                // {
-                //     title: 'Variants',
-                //     children: [
-                //         {
-                //             title: 'Breakpoint',
-                //             url: '/docs/utilities/variants/breakpoint'
-                //         },
-                //         {
-                //             title: 'Important',
-                //             url: '/docs/utilities/variants/important'
-                //         },
-                //         {
-                //             title: 'Media Query',
-                //             url: '/docs/utilities/variants/media-query'
-                //         }
-                //     ]
-                // },
                 {
                     title: 'Border',
                     url: '/docs/utilities/border'
@@ -432,6 +414,43 @@ export function useSidebarNavigation(): NavigationPage[] {
                 {
                     title: 'Visibility',
                     url: '/docs/utilities/visibility'
+                }
+            ]
+        },
+        {
+            title: 'Add-ons',
+            active: /\/docs\/add-ons(\/.+)?/,
+            children: [
+                {
+                    title: 'Unocss Preset',
+                    url: '/docs/add-ons/unocss',
+                    index: true,
+                    children: [
+                        {
+                            title: 'Vite.js',
+                            url: '/docs/add-ons/unocss/vite',
+                            navigation: {
+                                previous: '/docs/utilities/visibility',
+                                next: '/docs/contribution-guide'
+                            }
+                        },
+                        {
+                            title: 'Nuxt',
+                            url: '/docs/add-ons/unocss/nuxt',
+                            navigation: {
+                                previous: '/docs/utilities/visibility',
+                                next: '/docs/contribution-guide'
+                            }
+                        },
+                        {
+                            title: 'Webpack.js',
+                            url: '/docs/add-ons/unocss/webpack',
+                            navigation: {
+                                previous: '/docs/utilities/visibility',
+                                next: '/docs/contribution-guide'
+                            }
+                        }
+                    ]
                 }
             ]
         },
