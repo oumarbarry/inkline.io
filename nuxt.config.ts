@@ -1,5 +1,3 @@
-import en from './i18n/en';
-
 /**
  * @docs https://nuxt.com/docs/api/configuration/nuxt-config
  */
@@ -182,7 +180,9 @@ export default defineNuxtConfig({
             siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.inkline.io',
             auth0: {
                 domain: '',
+                issuerBaseURL: '',
                 clientId: '',
+                audience: '',
                 callbackUrl: ''
             }
         }
